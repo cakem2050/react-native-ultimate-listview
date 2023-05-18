@@ -80,7 +80,9 @@ export default class UltimateListView extends Component {
     paginationBtnText: 'Load more...',
 
     // GridView
-    numColumns: 1
+    numColumns: 1,
+
+    contentContainerMarginBottomStyle: 0
   }
 
   static propTypes = {
@@ -143,7 +145,9 @@ export default class UltimateListView extends Component {
     paginationBtnText: PropTypes.string,
 
     // GridView
-    numColumns: PropTypes.number
+    numColumns: PropTypes.number,
+
+    contentContainerMarginBottomStyle: PropTypes.number
   }
 
   constructor(props) {
@@ -306,7 +310,7 @@ export default class UltimateListView extends Component {
       }
 
       return (
-        <View style={styles.paginationView}>
+        <View style={[styles.paginationView, { marginBottom: Number(this.props.contentContainerMarginBottomStyle) || 0 }]}>
           <Text style={styles.allLoadedText}>
             {this.props.allLoadedText}
           </Text>
@@ -325,7 +329,7 @@ export default class UltimateListView extends Component {
         }
 
         return (
-          <View style={styles.paginationView}>
+          <View style={[styles.paginationView, { marginBottom: Number(this.props.contentContainerMarginBottomStyle) || 0 }]}>
             <ActivityIndicator color={this.props.spinnerColor} size={this.props.waitingSpinnerSize} />
             <Text
               style={[styles.paginationViewText, { marginLeft: 5 }]}
